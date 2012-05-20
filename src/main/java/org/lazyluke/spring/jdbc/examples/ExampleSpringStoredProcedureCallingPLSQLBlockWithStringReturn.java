@@ -33,16 +33,8 @@ public class ExampleSpringStoredProcedureCallingPLSQLBlockWithStringReturn exten
 	}
 	
 	
-	public void executePLSQLBlock(String id) {
-		System.out.println();
-		System.out.println("====================================================");
-		System.out.println("Call simple plsql block with Spring StoredProcedure");
-		System.out.println("====================================================");
-		
-		Map<String, Object> result1 = this.execute(id);
-		for (Entry<String, Object> entry : result1.entrySet()) {
-    		System.out.println(entry.getKey() + "=" + entry.getValue());
-		}
+	public Map<String, Object> executePLSQLBlock(String id) {
+		return this.execute(id);
 	}
 	
 }

@@ -44,11 +44,7 @@ public class ExampleSpringStoredProcedureCallingComplexPLSQLBlockWithCursorRetur
         declareParameter(new SqlOutParameter("outputParameter2", OracleTypes.CURSOR, new BeanPropertyRowMapper<Person>(Person.class)));
 	}
 	
-	public void executePLSQLBlock(String id) {
-		System.out.println();
-		System.out.println("====================================================================================");
-		System.out.println("Call plsql block with typed array input and cursor output via spring StoredProcedure");
-		System.out.println("====================================================================================");
+	public Map<String, Object> executePLSQLBlock(String id) {
 
 		AbstractSqlTypeValue p1 = new AbstractSqlTypeValue() {
 			@Override
@@ -62,11 +58,8 @@ public class ExampleSpringStoredProcedureCallingComplexPLSQLBlockWithCursorRetur
 			}
 		};
 		
-		Map<String, Object> result1 = this.execute(p1);
-		
-		for (Entry<String, Object> entry : result1.entrySet()) {
-    		System.out.println(entry.getKey() + "=" + entry.getValue());
-		}
+		return this.execute(p1);
+
 	}	
 }
 

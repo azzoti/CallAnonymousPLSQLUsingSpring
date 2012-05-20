@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -30,12 +32,32 @@ class App
 	ExampleSpringStoredProcedureCallingComplexPLSQLBlockWithCursorReturn storedProcedureForComplexPLSQL;
 
 	
-	public void doSomething() {
-		daoSql.doSomethingInTheDatabase();
-		storedProcedureForSimplePLSQL.executePLSQLBlock("123456");
-		storedProcedureForCursorReturnPLSQL.executePLSQLBlock("11111111");
-		storedProcedureForComplexPLSQL.executePLSQLBlock("22222");
-	}
+    public void doSomething() {
+        daoSql.doSomethingInTheDatabase();
+
+        printBanner("Call simple plsql block with Spring StoredProcedure");
+        printResults(storedProcedureForSimplePLSQL.executePLSQLBlock("123456"));
+
+        printBanner("Call plsql block with string input and string output and cursor output via spring StoredProcedure");
+        printResults(storedProcedureForCursorReturnPLSQL.executePLSQLBlock("11111111"));
+
+        printBanner("Call plsql block with typed array input and cursor output via spring StoredProcedure");
+        storedProcedureForComplexPLSQL.executePLSQLBlock("22222");
+    }
+
+    private static void printBanner(String message) {
+        System.out.println();
+        System.out.println("====================================================");
+        System.out.println(message);
+        System.out.println("====================================================");
+    }
+
+
+    private static void printResults(Map<String, Object> result1) {
+        for (Entry<String, Object> entry : result1.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+    }
 }
 
 @ComponentScan(basePackageClasses=Main.class)
