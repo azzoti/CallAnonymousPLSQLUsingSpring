@@ -2,16 +2,12 @@ package org.lazyluke.spring.jdbc.examples;
 
 import java.sql.Types;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Component;
 
 @Component
