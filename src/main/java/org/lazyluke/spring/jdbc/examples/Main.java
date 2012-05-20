@@ -42,7 +42,7 @@ class App
         printResults(storedProcedureForCursorReturnPLSQL.executePLSQLBlock("11111111"));
 
         printBanner("Call plsql block with typed array input and cursor output via spring StoredProcedure");
-        storedProcedureForComplexPLSQL.executePLSQLBlock("22222");
+        printResults(storedProcedureForComplexPLSQL.executePLSQLBlock("22222"));
     }
 
     private static void printBanner(String message) {
