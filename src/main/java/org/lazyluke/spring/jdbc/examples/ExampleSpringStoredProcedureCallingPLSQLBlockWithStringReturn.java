@@ -28,11 +28,9 @@ public class ExampleSpringStoredProcedureCallingPLSQLBlockWithStringReturn exten
         declareParameter(new SqlOutParameter("outputParameter", Types.VARCHAR));
 	}
 	
-	
 	public Map<String, Object> executePLSQLBlock(String id) {
 		return this.execute(id);
 	}
-	
 }
 
 
