@@ -71,12 +71,10 @@ public class Main {
 	
     public static void main( String[] args ) throws Exception
     {
-    	
-    	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
-    	App app = context.getBean(App.class);
-    	
-    	context.getBean(DataSource.class);
 		setupOracleTypes();
+		
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
+        App app = context.getBean(App.class);
 		app.doSomething();
     }
     
